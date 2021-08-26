@@ -51,6 +51,7 @@ Plug 'wellle/context.vim'
 Plug 'andymass/vim-matchup'
 Plug 'dense-analysis/ale'
 Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 filetype plugin indent on
@@ -87,7 +88,7 @@ augroup END
 
 " Main Coloring Configurations
 syntax on
-color nord
+color gruvbox
 
 " Enable True Color Support (ensure you're using a 256-color enabled $TERM, e.g. xterm-256color)
 set termguicolors
