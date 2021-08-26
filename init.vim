@@ -367,7 +367,7 @@ nmap <silent> <leader><leader> :noh<CR>
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
 
-""Movement between splits
+""Movement between splits.
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
