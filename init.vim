@@ -1,3 +1,6 @@
+"" My custom neovim init. Mainly based on Optixal/neovim-init.vim
+"" Notes at the end of the file
+
 call plug#begin('~/AppData/Local/nvim/plugged')
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-airline/vim-airline'
@@ -47,11 +50,24 @@ Plug 'psliwka/vim-smoothie'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'wellle/context.vim'
 
+""""""""
 ""Paolo
+""""""""
+
 Plug 'andymass/vim-matchup'
+"Linter, gets info from Coc
 Plug 'dense-analysis/ale'
 Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
+
+"close buffers without closing nvim
+Plug 'moll/vim-bbye'
+"debugger integration
+Plug 'vim-vdebug/vdebug'
+
+"php
+Plug 'StanAngeloff/php.vim'
+Plug 'stephpy/vim-php-cs-fixer'
 call plug#end()
 
 filetype plugin indent on
@@ -99,11 +115,40 @@ let NERDTreeShowHidden=1
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
+"php-cs-fixer
+
+" If you use php-cs-fixer version 1.x
+let g:php_cs_fixer_level = "symfony"                   " options: --level (default:symfony)
+let g:php_cs_fixer_config = "default"                  " options: --config
+" If you want to define specific fixers:
+"let g:php_cs_fixer_fixers_list = "linefeed,short_tag" " options: --fixers
+"let g:php_cs_fixer_config_file = '.php_cs'            " options: --config-file
+" End of php-cs-fixer version 1 config params
+
+" If you use php-cs-fixer version 2.x
+let g:php_cs_fixer_rules = "@PSR2"          " options: --rules (default:@PSR2)
+"let g:php_cs_fixer_cache = ".php_cs.cache" " options: --cache-file
+"let g:php_cs_fixer_config_file = '.php_cs' " options: --config
+" End of php-cs-fixer version 2 config params
+
+let g:php_cs_fixer_php_path = "php"               " Path to PHP
+let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
+let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
+let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
+
+" Vdebug
+let g:vdebug_options = {}
+let g:vdebug_options = {'ide_key': 'vim-xdebug'}
+let g:vdebug_options = {'break_on_open': 0}
+let g:vdebug_options = {'server': '127.0.0.1'}
+let g:vdebug_options = {'port': '9000'}
+
 " Airline
 let g:airline_powerline_fonts = 1
-let g:airline_section_z = ' %{strftime("%-I:%M %p")}'
+"let g:airline_section_z = ' %{strftime("%-I:%M %p")}'
 let g:airline_section_warning = ''
-"let g:airline#extensions#tabline#enabled = 1 " Uncomment to display buffer tabline above
+let g:airline#extensions#tabline#enabled = 1 " Uncomment to display buffer tabline above
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " Neovim :Terminal but Esc still works to close fzf windows
 tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
@@ -171,6 +216,11 @@ autocmd VimEnter *
     \ |   wincmd w
     \ | endif
 
+
+""let Coc manage the linting
+""also add "diagnostic.displayByAle": true in you :CocConfig
+let g:ale_disable_lsp = 1
+
 " coc.vim START
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
@@ -189,7 +239,39 @@ else
   set signcolumn=yes
 endif
 
-" Use tab for trigger completion with characters ahead and navigate.
+""PHP
+
+if executable('intelephense')
+  augroup LspPHPIntelephense
+    au!
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'intelephense',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'intelephense --stdio']},
+        \ 'whitelist': ['php'],
+        \ 'initialization_options': {'storagePath': '/tmp/intelephense'},
+        \ 'workspace_config': {
+        \   'intelephense': {
+        \     'files': {
+        \       'maxSize': 1000000,
+        \       'associations': ['*.php', '*.phtml'],
+        \       'exclude': [],
+        \     },
+        \     'completion': {
+        \       'insertUseDeclaration': v:true,
+        \       'fullyQualifyGlobalConstantsAndFunctions': v:false,
+        \       'triggerParameterHints': v:true,
+        \       'maxItems': 100,
+        \     },
+        \     'format': {
+        \       'enable': v:true
+        \     },
+        \   },
+        \ }
+        \})
+  augroup END
+endif
+
+"Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
@@ -245,8 +327,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>cfs  <Plug>(coc-format-selected)
+nmap <leader>cfs  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -269,8 +351,9 @@ let g:cursorhold_updatetime = 100
 
 " context.vim
 let g:context_nvim_no_redraw =1
+let g:python3_host_prog="/usr/bin/python"
 
-""" Filetype-Specific Configurations
+"" Filetype-Specific Configurations
 
 " HTML, XML, Jinja
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
@@ -320,7 +403,7 @@ function! ColorZazen()
     color zazen
 endfunction
 
-"if has("win64")
+"if has("win32")
 "set shell=bash.exe
 "set shellpipe=|
 "set shellredir=>
@@ -334,8 +417,7 @@ nmap <leader>$s <C-w>s<C-w>j:terminal<CR>:set nonumber<CR><S-a>
 nmap <leader>$v <C-w>v<C-w>l:terminal<CR>:set nonumber<CR><S-a>
 "NERDTREE
 nmap <leader>nt :NERDTree %:p:h<CR>
-nmap <leader>q :NERDTreeToggle<CR>
-nmap \\ <leader>q
+nmap \\ :NERDTreeToggle<CR>
 nmap <leader>w :TagbarToggle<CR>
 nmap \| <leader>w
 
@@ -346,7 +428,12 @@ nmap <leader>e2 :call ColorSeoul256()<CR>
 nmap <leader>e3 :call ColorForgotten()<CR>
 nmap <leader>e4 :call ColorZazen()<CR>
 
-nmap <leader>r :so C:\Users\paolo\AppData\Local\nvim\init.vim<CR>
+if has("unix")
+    nmap <leader>r :so ~/.config/nvim/init.vim<CR>
+elseif
+    nmap <leader>r :so C:\Users\paolo\AppData\Local\nvim\init.vim<CR>
+endif
+
 nmap <leader>t :call TrimWhitespace()<CR>
 xmap <leader>a gaip*
 nmap <leader>a gaip*
@@ -390,7 +477,41 @@ vnoremap $$ <esc>`>a"<esc>`<i"<esc>
 vnoremap $q <esc>`>a'<esc>`<i'<esc>
 vnoremap $e <esc>`>a`<esc>`<i`<esc>
 
+"vim-bbeye close buffer without closing main window
+nmap <leader>qw :Bdelete<cr>
+nmap <leader>qq :Bwipeout<cr>
+
 ""Make project with build, run, debug executable files in CWD
-nmap <F2> :!build<CR>
-nmap <F3> :!run<CR>
-nmap <F4> :!debutg<CR>
+nmap <leader><F2> :!build<CR>
+nmap <leader><F3> :!run<CR>
+nmap <leader><F4> :!debutg<CR>
+
+""""""""""
+""NOTES
+""""""""""
+" * Install neovim python3 python3-pip git curl ctags
+" * pip install wheel yapf pynvim
+" * Install node
+" * Install silversearcher-ag ripgrep
+" * Install vim-plug
+"   * curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
+" * ensure to copy CocSettings from coc-settings.json
+"
+" PHP
+" * CocInstall coc-phpls
+" * npm -g i intelephense
+" * optionally add license key in CocConfig
+"   * "intelephense.licenseKey": "<your-key-here>"
+" * install php-cs-fixer globally
+"   * wget https://cs.symfony.com/download/php-cs-fixer-v3.phar -O php-cs-fixer
+"   * sudo chmod a+x php-cs-fixer
+"   * sudo mv php-cs-fixer /usr/local/bin/php-cs-fixer
+"
+" PHP debug
+" * install xdebug
+" * confiure xdebug port 9000 vim-xdebug ide_key
+" * for xdebug 3 refer to https://xdebug.org/docs/upgrade_guide
+"
+" CSS
+" * CocInstall coc-css
+" * npm install --save vscode-css-languageservice
