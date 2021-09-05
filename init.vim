@@ -2,224 +2,230 @@
 "" Notes at the end of the file
 
 call plug#begin('~/AppData/Local/nvim/plugged')
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'bryanmylee/vim-colorscheme-icons'
-Plug 'mhinz/vim-startify'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'junegunn/seoul256.vim'
-Plug 'junegunn/vim-journal'
-Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'nightsense/forgotten'
-Plug 'zaki/zazen'
+    Plug 'dracula/vim', { 'as': 'dracula' }
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'bryanmylee/vim-colorscheme-icons'
+    Plug 'mhinz/vim-startify'
+    Plug 'junegunn/goyo.vim'
+    Plug 'junegunn/limelight.vim'
+    Plug 'junegunn/seoul256.vim'
+    Plug 'junegunn/vim-journal'
+    Plug 'junegunn/rainbow_parentheses.vim'
+    Plug 'nightsense/forgotten'
+    Plug 'zaki/zazen'
 
-" Aethetics - Additional
-Plug 'nightsense/nemo'
-Plug 'yuttie/hydrangea-vim'
-Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
-Plug 'rhysd/vim-color-spring-night'
+    " Aethetics - Additional
+    Plug 'nightsense/nemo'
+    Plug 'yuttie/hydrangea-vim'
+    Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
+    Plug 'rhysd/vim-color-spring-night'
 
-" Functionalities
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-surround'
-Plug 'majutsushi/tagbar'
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
-Plug 'scrooloose/nerdcommenter'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'mhinz/vim-signify'
-Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/vim-easy-align'
-Plug 'alvan/vim-closetag'
-Plug 'tpope/vim-abolish'
-Plug 'Yggdroot/indentLine'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'chrisbra/Colorizer'
-Plug 'KabbAmine/vCoolor.vim'
-Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
-Plug 'vim-scripts/loremipsum'
-Plug 'metakirby5/codi.vim'
-Plug 'dkarter/bullets.vim'
-Plug 'psliwka/vim-smoothie'
-Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'wellle/context.vim'
+    " Functionalities
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-sensible'
+    Plug 'tpope/vim-surround'
+    Plug 'majutsushi/tagbar'
+    Plug 'preservim/nerdtree'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'mhinz/vim-signify'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'junegunn/vim-easy-align'
+    Plug 'alvan/vim-closetag'
+    Plug 'tpope/vim-abolish'
+    Plug 'Yggdroot/indentLine'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+    Plug 'sheerun/vim-polyglot'
+    Plug 'chrisbra/Colorizer'
+    Plug 'KabbAmine/vCoolor.vim'
+    Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
+    Plug 'vim-scripts/loremipsum'
+    Plug 'metakirby5/codi.vim'
+    Plug 'dkarter/bullets.vim'
+    Plug 'psliwka/vim-smoothie'
+    Plug 'antoinemadec/FixCursorHold.nvim'
+    Plug 'wellle/context.vim'
 
-""""""""
-""Paolo
-""""""""
+    """"""""
+    ""Paolo
+    """"""""
+    Plug 'ekalinin/Dockerfile.vim'
+    Plug 'andymass/vim-matchup'
+    "Linter, gets info from Coc
+    Plug 'dense-analysis/ale'
+    Plug 'arcticicestudio/nord-vim'
+    Plug 'morhetz/gruvbox'
 
-Plug 'andymass/vim-matchup'
-"Linter, gets info from Coc
-Plug 'dense-analysis/ale'
-Plug 'arcticicestudio/nord-vim'
-Plug 'morhetz/gruvbox'
+    "close buffers without closing nvim
+    Plug 'moll/vim-bbye'
+    "debugger integration
+    Plug 'vim-vdebug/vdebug'
 
-"close buffers without closing nvim
-Plug 'moll/vim-bbye'
-"debugger integration
-Plug 'vim-vdebug/vdebug'
+    "php
+    Plug 'StanAngeloff/php.vim'
+    Plug 'stephpy/vim-php-cs-fixer'
 
-"php
-Plug 'StanAngeloff/php.vim'
-Plug 'stephpy/vim-php-cs-fixer'
-call plug#end()
+    "snippets
+    Plug 'honza/vim-snippets'
+    Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+    call plug#end()
 
-filetype plugin indent on
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
-set incsearch ignorecase smartcase hlsearch
-set wildmode=longest,list,full wildmenu
-set ruler laststatus=2 showcmd showmode
-set fillchars+=vert:\ 
-set wrap breakindent
-set encoding=utf-8
-set textwidth=0
-set hidden
-set number
-set title
+    filetype plugin indent on
+    set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
+    set incsearch ignorecase smartcase hlsearch
+    set wildmode=longest,list,full wildmenu
+    set ruler laststatus=2 showcmd showmode
+    set fillchars+=vert:\ 
+    set wrap breakindent
+    set encoding=utf-8
+    set textwidth=0
+    set hidden
+    set number relativenumber
+    set title
 
-" Functions and autocmds to run whenever changing colorschemes
-function! TransparentBackground()
-    highlight Normal guibg=NONE ctermbg=NONE
-    highlight LineNr guibg=NONE ctermbg=NONE
-    set fillchars+=vert:\¦
-    highlight VertSplit gui=NONE guibg=NONE guifg=#444444 cterm=NONE ctermbg=NONE ctermfg=gray
-endfunction
+    " Functions and autocmds to run whenever changing colorschemes
+    function! TransparentBackground()
+        highlight Normal guibg=NONE ctermbg=NONE
+        highlight LineNr guibg=NONE ctermbg=NONE
+        set fillchars+=vert:\¦
+        highlight VertSplit gui=NONE guibg=NONE guifg=#444444 cterm=NONE ctermbg=NONE ctermfg=gray
+    endfunction
 
-function! DraculaPMenu()
-    highlight Pmenu guibg=#363948
-    highlight PmenuSbar guibg=#363948
-endfunction
+    function! DraculaPMenu()
+        highlight Pmenu guibg=#363948
+        highlight PmenuSbar guibg=#363948
+    endfunction
 
-augroup MyColors
-    autocmd!
-    autocmd ColorScheme dracula call DraculaPMenu()
-    "autocmd ColorScheme * call TransparentBackground() " uncomment if you are using a translucent terminal and you want nvim to use that
-augroup END
+    augroup MyColors
+        autocmd!
+        autocmd ColorScheme dracula call DraculaPMenu()
+        "autocmd ColorScheme * call TransparentBackground() " uncomment if you are using a translucent terminal and you want nvim to use that
+    augroup END
 
-" Main Coloring Configurations
-syntax on
-color gruvbox
+    " Main Coloring Configurations
+    syntax on
+    color gruvbox
 
-" Enable True Color Support (ensure you're using a 256-color enabled $TERM, e.g. xterm-256color)
-set termguicolors
-""" Plugin Configurations
+    " Enable True Color Support (ensure you're using a 256-color enabled $TERM, e.g. xterm-256color)
+    set termguicolors
+    """ Plugin Configurations
 
-" NERDTree
-let NERDTreeShowHidden=1
-" Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+    " NERDTree
+    let NERDTreeShowHidden=1
+    " Exit Vim if NERDTree is the only window left.
+    autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
-"php-cs-fixer
+    "php-cs-fixer
 
-" If you use php-cs-fixer version 1.x
-let g:php_cs_fixer_level = "symfony"                   " options: --level (default:symfony)
-let g:php_cs_fixer_config = "default"                  " options: --config
-" If you want to define specific fixers:
-"let g:php_cs_fixer_fixers_list = "linefeed,short_tag" " options: --fixers
-"let g:php_cs_fixer_config_file = '.php_cs'            " options: --config-file
-" End of php-cs-fixer version 1 config params
+    " If you use php-cs-fixer version 1.x
+    let g:php_cs_fixer_level = "symfony"                   " options: --level (default:symfony)
+    let g:php_cs_fixer_config = "default"                  " options: --config
+    " If you want to define specific fixers:
+    "let g:php_cs_fixer_fixers_list = "linefeed,short_tag" " options: --fixers
+    "let g:php_cs_fixer_config_file = '.php_cs'            " options: --config-file
+    " End of php-cs-fixer version 1 config params
 
-" If you use php-cs-fixer version 2.x
-let g:php_cs_fixer_rules = "@PSR2"          " options: --rules (default:@PSR2)
-"let g:php_cs_fixer_cache = ".php_cs.cache" " options: --cache-file
-"let g:php_cs_fixer_config_file = '.php_cs' " options: --config
-" End of php-cs-fixer version 2 config params
+    " If you use php-cs-fixer version 2.x
+    let g:php_cs_fixer_rules = "@PSR2"          " options: --rules (default:@PSR2)
+    "let g:php_cs_fixer_cache = ".php_cs.cache" " options: --cache-file
+    "let g:php_cs_fixer_config_file = '.php_cs' " options: --config
+    " End of php-cs-fixer version 2 config params
 
-let g:php_cs_fixer_php_path = "php"               " Path to PHP
-let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
-let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
-let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
+    let g:php_cs_fixer_php_path = "php"               " Path to PHP
+    let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
+    let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
+    let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
 
-" Vdebug
-let g:vdebug_options = {}
-let g:vdebug_options = {'ide_key': 'vim-xdebug'}
-let g:vdebug_options = {'break_on_open': 0}
-let g:vdebug_options = {'server': '127.0.0.1'}
-let g:vdebug_options = {'port': '9000'}
+    " Vdebug
+    let g:vdebug_options = {}
+    let g:vdebug_options = {'ide_key': 'vim-xdebug'}
+    let g:vdebug_options = {'break_on_open': 0}
+    let g:vdebug_options = {'server': '127.0.0.1'}
+    let g:vdebug_options = {'port': '9001'}
+    let g:vdebug_options.path_maps = {'/var/www/html/public' : '/home/stonedz/work/ciaoflorence'}
 
-" Airline
-let g:airline_powerline_fonts = 1
-"let g:airline_section_z = ' %{strftime("%-I:%M %p")}'
-let g:airline_section_warning = ''
-let g:airline#extensions#tabline#enabled = 1 " Uncomment to display buffer tabline above
-let g:airline#extensions#tabline#buffer_nr_show = 1
+    " Airline
+    let g:airline_powerline_fonts = 1
+    "let g:airline_section_z = ' %{strftime("%-I:%M %p")}'
+    let g:airline_section_warning = ''
+    let g:airline#extensions#tabline#enabled = 1 " Uncomment to display buffer tabline above
+    let g:airline#extensions#tabline#buffer_nr_show = 1
 
-" Neovim :Terminal but Esc still works to close fzf windows
-tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
-tmap <C-w> <Esc><C-w>
-"tmap <C-d> <Esc>:q<CR>
-autocmd BufWinEnter,WinEnter term://* startinsert
-autocmd BufLeave term://* stopinsert
+    " Neovim :Terminal but Esc still works to close fzf windows
+    tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
+    tmap <C-w> <Esc><C-w>
+    "tmap <C-d> <Esc>:q<CR>
+    autocmd BufWinEnter,WinEnter term://* startinsert
+    autocmd BufLeave term://* stopinsert
 
-" vim-pydocstring
-let g:pydocstring_doq_path = '~/.config/nvim/env/bin/doq'
+    " vim-pydocstring
+    let g:pydocstring_doq_path = '~/.config/nvim/env/bin/doq'
 
-" Supertab
-let g:SuperTabDefaultCompletionType = "<C-n>"
+    " Supertab
+    let g:SuperTabDefaultCompletionType = "<C-n>"
 
-" EasyAlign
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+    " EasyAlign
+    xmap ga <Plug>(EasyAlign)
+    nmap ga <Plug>(EasyAlign)
 
-" indentLine
-let g:indentLine_char = '|'
-let g:indentLine_defaultGroup = 'NonText'
-" Disable indentLine from concealing json and markdown syntax (e.g. ```)
-let g:vim_json_syntax_conceal = 0
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
+    " indentLine
+    let g:indentLine_char = '|'
+    let g:indentLine_defaultGroup = 'NonText'
+    " Disable indentLine from concealing json and markdown syntax (e.g. ```)
+    let g:vim_json_syntax_conceal = 0
+    let g:vim_markdown_conceal = 0
+    let g:vim_markdown_conceal_code_blocks = 0
 
-" TagBar
-let g:tagbar_width = max([25, winwidth(0) / 5])
+    " TagBar
+    let g:tagbar_width = max([25, winwidth(0) / 5])
 
-" fzf-vim
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit' }
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'Type'],
-  \ 'border':  ['fg', 'Constant'],
-  \ 'prompt':  ['fg', 'Character'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+    " fzf-vim
+    let g:fzf_action = {
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit' }
+    let g:fzf_colors =
+    \ { 'fg':      ['fg', 'Normal'],
+      \ 'bg':      ['bg', 'Normal'],
+      \ 'hl':      ['fg', 'Comment'],
+      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+      \ 'hl+':     ['fg', 'Statement'],
+      \ 'info':    ['fg', 'Type'],
+      \ 'border':  ['fg', 'Constant'],
+      \ 'prompt':  ['fg', 'Character'],
+      \ 'pointer': ['fg', 'Exception'],
+      \ 'marker':  ['fg', 'Keyword'],
+      \ 'spinner': ['fg', 'Label'],
+      \ 'header':  ['fg', 'Comment'] }
 
-" Bat theme for syntax coloring when viewing files in fzf
-let $BAT_THEME='base16'
+    " Bat theme for syntax coloring when viewing files in fzf
+    let $BAT_THEME='base16'
 
-" Limelight
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_guifg = 'gray'
+    " Limelight
+    let g:limelight_conceal_ctermfg = 'gray'
+    let g:limelight_conceal_guifg = 'gray'
 
-" Startify
-let g:startify_fortune_use_unicode = 1
+    " Startify
+    let g:startify_fortune_use_unicode = 1
 
-" Startify + NERDTree on start when no file is specified
-autocmd VimEnter *
-    \   if !argc()
-    \ |   Startify
-    \ |   NERDTree
-    \ |   wincmd w
-    \ | endif
+    " Startify + NERDTree on start when no file is specified
+    autocmd VimEnter *
+        \   if !argc()
+        \ |   Startify
+        \ |   NERDTree
+        \ |   wincmd w
+        \ | endif
 
 
-""let Coc manage the linting
-""also add "diagnostic.displayByAle": true in you :CocConfig
-let g:ale_disable_lsp = 1
+    ""let Coc manage the linting
+    ""also add "diagnostic.displayByAle": true in you :CocConfig
+    let g:ale_disable_lsp = 1
+
 
 " coc.vim START
 
@@ -274,6 +280,7 @@ endif
 "Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
+
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -438,7 +445,7 @@ nmap <leader>t :call TrimWhitespace()<CR>
 xmap <leader>a gaip*
 nmap <leader>a gaip*
 nmap <leader>s :Rg<CR>
-nmap <leader>d :Files<CR>
+nmap <leader>dd :Files<CR>
 nmap <leader>ff :BLines<CR>
 nmap <leader>fa :Lines<CR>
 nmap <leader>f :Ag<CR> 
@@ -481,10 +488,16 @@ vnoremap $e <esc>`>a`<esc>`<i`<esc>
 nmap <leader>qw :Bdelete<cr>
 nmap <leader>qq :Bwipeout<cr>
 
+"vim-php-cs-fizer
+nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
+nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
+
 ""Make project with build, run, debug executable files in CWD
 nmap <leader><F2> :!build<CR>
 nmap <leader><F3> :!run<CR>
 nmap <leader><F4> :!debutg<CR>
+
+
 
 """"""""""
 ""NOTES
@@ -501,7 +514,7 @@ nmap <leader><F4> :!debutg<CR>
 " * CocInstall coc-phpls
 " * npm -g i intelephense
 " * optionally add license key in CocConfig
-"   * "intelephense.licenseKey": "<your-key-here>"
+"    * "intelephense.licenceKey": "LICENSE"
 " * install php-cs-fixer globally
 "   * wget https://cs.symfony.com/download/php-cs-fixer-v3.phar -O php-cs-fixer
 "   * sudo chmod a+x php-cs-fixer

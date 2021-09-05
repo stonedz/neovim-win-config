@@ -1,1 +1,4 @@
-"diagnostic.displayByAle": true
+{
+    "diagnostic.displayByAle": true,
+    "intelephense.licenceKey": "LICENSEKEY"
+}
